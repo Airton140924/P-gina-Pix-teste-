@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento via Pix</title>
+  <style>
+    body { background: #f8f8f8; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .container { background: #fff; display: inline-block; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { margin-bottom: 20px; }
+    p { margin: 10px 0; }
+    button { margin: 5px; padding: 8px 12px; font-size: 1em; cursor: pointer; }
+    #qrImage { margin-top: 20px; width: 280px; height: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAGGCAIAAACSYV+dAAAKiElEQVR4nO3d329UZR7H8WeY0gGxqKALqAjKqqCCyS6IootebGLihVeaqPHSmBj1H/AvMF564z9gool4o0Qv3MSAUmtiohIVUBGEXbURithAO6Vl9gJj3O7uxGQYz5lPX6/0jjlnfr7ztMw3z2l0Op0CJFpU9QMA+kXeEEveEEveEEveEEveEEveEEveEEveEEveEEveEEveEEveEEveEEveEGvo4p5uYmpi95e73/zyzYmfJkqzlKEyMzczdW5qtjM7PDe8tLl01cpVD9/68EObHmqUxoVDRo+Pvrz/5Q++/WC4M7xk6ZKhoaHSKKVTZmdnp6emZxozd6276/Etj+9Yu+PC7U+cPbHrwK5dn+86derU0sbS4ZHhu9ff/fiWx29eefOFG3RKZ9eBXa99/tr4j+PT7emZ4flngAXiIufdnm0fOHHgra/eOjt+tnRKuaSsvmr1znU711y65uD4wfeOvnf2+Nnj48fHjozd+Kcbt1+7fcuqLSuWrrh91e3N0tz/3f4P//Vhe7JdzpWyuLRGWttXb7/j6jtuW3XbiqUrfr2LVrN1/eXX71i741Dz0N4je3848sNHxz86MH5g85rNF25weur0u4ff/eToJ6VZ7lx75z3r7pl3BlggLnLejUZjydCS5a3lZ1tny7lShst96+97/u/Pr7ts3Z5je07/4/TYl2Njn42NHRxbvX71c397btNVmzZeuXHjlRtLKa9+/urkvsmPz35cZkpplltW3fLUjqceufWReXcx0hq5f8P992+4/+TUyVc+e2X3od3Hfzz+xsE3Xv/49TJXSqOU4bJ62eodf96x+drNj21+bOd1Oy/uc4RBcZHz/g+LSillsj15eOLwyOKRY6eOTbWnSrMsGVnSurS1YcWGy5dc/uuv6O259pmZM3Pn50qjXPiZOz93ZuZMe67darb+5+lXLl35zLZnntn2zJ5je154/4W3Dr5VJktZXNasXPPsHc8+ve3p5a3lfXx2UHt9y3tRKYtLaZa3v377nW/eKaWcmz7XaXdGVow8+Zcnn/jrE9eMXNMaag03h/v1AGDB61ve50uZLWWobLtu26ObH91+9fbZ2dnZ87OLFy++7rLr1i5fO+/mrWZr2fCy5qJm6ZQLP81FzWXDy/7f0l1K+e0v51+d/qq0S2mW0infn/z+xb0v7v58t1/OWeAuct6dTmd6dvrn9s9lupRSSrN8O/Ht2Ddjk9OTW6/eunP9zkuGLpl3yMETB/cc3fPZ+Gf7v9v/xfgXv/z9PFe+GP/ipdGX9h3dd9uq2+5df++Fv89LKZPtydF/ju47tu/Qd4f2Htn7w8kfRq4YeXDjg/P+a23069HRI6OfHv106/qt884AC8RFzrs11Np05aYHbnxg4qpfvhg7N3Pu6xNfH548PHd+7oYrbrhp5U3zDpmYmvh0/NMLX4xtv2b7vC/G3v/2/bkyt3nV5l9v355rH/npyOjx0VOnTm1YvmHTNZu6fzH232eABaJhn3NIZWoNYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYskbYg1VdceNRqOqu+6TTqfT5V+7P9+8Y3ux0D4b/WP1hljyhljyhljyhljyhljyhljyhljyhljyhliVTa11V9WUT3dVTVNVNR9Wz5k2n43fz+oNseQNseQNseQNseQNseQNseQNseQNseQNsWo6tdZd/yaE6jlrVdXzreckVneD+NnoH6s3xJI3xJI3xJI3xJI3xJI3xJI3xJI3xJI3xBrIqbVBVM992vq31xp1YPWGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWKbWaqF/82H2HlvIrN4QS94QS94QS94QS94QS94QS94QS94QS94QayCn1hbavFRV+6X178z1vBJrHqs3xJI3xJI3xJI3xJI3xJI3xJI3xJI3xJI3xKrp1JqrT/5WVdNj9XwX6vmo6snqDbHkDbHkDbHkDbHkDbHkDbHkDbHkDbHkDbEa9qaqg/7tTFbVmbvzqftjWL0hlrwhlrwhlrwhlrwhlrwhlrwhlrwhlrwhVk33WuvFIE6A1XPPs3rOpfXv1ejfu1DVlJ7VG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2IN5NRaL/NDvUye1XOqqao5vKrehe56ecx5V1O1ekMseUMseUMseUMseUMseUMseUMseUMseUOsyqbW6jm31F09p5r6N4c3iKp6j+r5Slq9IZa8IZa8IZa8IZa8IZa8IZa8IZa8IZa8IVajntM2vahq9qieV67s37Hd1XPCL+/T3p3VG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2ItuL3WelHVjFd3g3jlynq+kr2cuZ7zcFZviCVviCVviCVviCVviCVviCVviCVviCVviFXTvdYG8VqNVU01DeL91vM6noM4l9ad1RtiyRtiyRtiyRtiyRtiyRtiyRtiyRtiyRtiVTa1Vs8JoUG8ymf/1HOftnruxFbPmTarN8SSN8SSN8SSN8SSN8SSN8SSN8SSN8SSN8QayL3WqromZj3npbqralou78y9qKoyqzfEkjfEkjfEkjfEkjfEkjfEkjfEkjfEkjfEqulea925+uTvPzO/VdXrbGoNuMjkDbHkDbHkDbHkDbHkDbHkDbHkDbHkDbFqutdanqpmnvo3w1fPa57Wc0+7qli9IZa8IZa8IZa8IZa8IZa8IZa8IZa8IZa8IdZQVXect0NY97mlel7VtJ7vQlUTb/W8bmkvrN4QS94QS94QS94QS94QS94QS94QS94QS94Qq7Kpte7quXPVIM6WDeKuZlXNpdVzhq8XVm+IJW+IJW+IJW+IJW+IJW+IJW+IJW+IJW+IVdOpte4GcV6qu/7t1FXPSbt6zofV83XuhdUbYskbYskbYskbYskbYskbYskbYskbYskbYg3k1Nogqmourao5vF5m2vKOrYrVG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2LJG2KZWvuDVLWP1yDuS9e/59vLYx7EmTarN8SSN8SSN8SSN8SSN8SSN8SSN8SSN8SSN8QayKm1eu5r1T+9zEv1cubuqprT6t+VSfM+V1ZviCVviCVviCVviCVviCVviCVviCVviCVviFXTqbX+7RA2iOo5l9aLvPmwerJ6Qyx5Qyx5Qyx5Qyx5Qyx5Qyx5Qyx5Qyx5Q6yG+SFIZfWGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWPKGWP8GDyQ+DnIBjIwAAAAASUVORK5CYII=" alt="QR Code Pix" id="qrImage" />
+    <h1>Pagamento via Pix</h1>
+    <p id="pixName">Nome: Airton Amorim</p>
+    <p>Chave Pix: <span id="pixKey">81 992841406</span> <button id="copyKeyBtn">Copiar</button></p>
+    <button id="copyCodeBtn">Copiar código Pix</button>
+  </div>
+
+  <script>
+    const pixKey = document.getElementById('pixKey').textContent;
+    const pixCode = pixKey;
+
+    document.getElementById('copyKeyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(pixKey).catch(err => console.error(err));
+    });
+
+    document.getElementById('copyCodeBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(pixCode).catch(err => console.error(err));
+    });
+  </script>
+</body>
+</html>
